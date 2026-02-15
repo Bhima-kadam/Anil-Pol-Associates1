@@ -1,0 +1,447 @@
+/* --- VARIABLES --- */
+:root {
+    --navy: #002b5c;
+    --blue: #0d6efd;
+    --gold: #C5A059;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --text-grey: #444444;
+}
+
+/* --- RESET & BASE --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    line-height: 1.6; 
+    color: #333; 
+    overflow-x: hidden; 
+    background-color: var(--white);
+}
+
+/* --- FIXED HEADER & LOGO --- */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: beige !important;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    width: 100%;
+    max-width: 98%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: -10px; 
+    cursor: pointer;
+    background: transparent !important;
+}
+
+.main-logo { 
+    height: 80px;
+    width: auto; 
+    mix-blend-mode: multiply; 
+    filter: contrast(120%) brightness(105%); 
+    object-fit: contain;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -25px;
+}
+
+.logo-text h1 { 
+    font-size: 20px; 
+    color: #002b5c;
+    font-weight: 700; 
+    margin: 0; 
+    line-height: 1;
+}
+
+.logo-text span { 
+    font-size: 13px; 
+    color: green; 
+    text-transform: uppercase; 
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* --- NAVIGATION --- */
+.nav-box { margin-right: 10px; }
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 25px; 
+    align-items: center; 
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: #444; 
+    font-weight: 600; 
+    font-size: 15px; 
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+/* Dropdown Menu */
+.dropdown { position: relative; }
+.dropdown-menu { 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    background: white; 
+    min-width: 220px; 
+    display: none; 
+    list-style: none; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
+    border-top: 3px solid var(--blue);
+    z-index: 100;
+}
+.dropdown:hover .dropdown-menu { display: block; }
+
+.dropdown-menu li a { 
+    padding: 12px 20px; 
+    display: block; 
+    border-bottom: 1px solid #eee; 
+    font-size: 14px;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    height: 400px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/bg5.jpeg');
+    background-size: cover; 
+    background-position: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    text-align: center;
+}
+.hero-section h2 { font-size: 42px; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+
+/* --- COMMON LAYOUT --- */
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+.section-padding { padding: 80px 0; }
+
+/* --- ABOUT SECTION --- */
+.about-flex {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.about-image { flex: 1; }
+.about-image img { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
+.about-text-container { flex: 1.2; }
+.about-text-container h2 { margin-bottom: 20px; color: var(--navy); font-size: 36px; }
+.about-text-container p { 
+    font-size: 17px; 
+    color: var(--text-grey); 
+    line-height: 1.8; 
+    text-align: justify; 
+}
+
+/* --- SERVICES SLIDER (Netflix Style) --- */
+.netflix-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 5px;
+    scrollbar-width: none;
+}
+.netflix-slider::-webkit-scrollbar { display: none; }
+
+.service-card {
+    flex: 0 0 280px;
+    height: 380px;
+    background: white;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+.service-card:hover { transform: scale(1.05); }
+.service-card img { width: 100%; height: 100%; object-fit: cover; }
+.service-card h3 {
+    position: absolute; bottom: 0; width: 100%; padding: 25px 15px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: white; text-align: center; font-size: 22px;
+}
+
+/* --- MISSION & VISION (Grid Layout for Service Pages) --- */
+.mission-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+.mv-box {
+    flex: 1;
+    background: var(--white);
+    padding: 40px;
+    border-top: 5px solid var(--navy);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.mv-box:hover { transform: translateY(-10px); border-top-color: var(--blue); }
+
+/* --- CONTACT SECTION & MAP --- */
+.contact-flex-wrapper { display: flex; gap: 50px; align-items: center; }
+.contact-map-box { 
+    flex: 1.5; 
+    width: 100%;
+    height: 450px;
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+.contact-map-box iframe { width: 100%; height: 100%; border: 0; }
+
+.whatsapp-float {
+    position: fixed; bottom: 20px; right: 20px;
+    background-color: #25d366; color: white;
+    padding: 10px 20px; border-radius: 50px;
+    text-decoration: none; font-weight: bold;
+    z-index: 1000; display: flex; align-items: center; gap: 8px;
+}
+
+/* --- UNIVERSAL MOBILE RESPONSIVE FIX --- */
+@media (max-width: 768px) {
+    .header-container { flex-direction: column; gap: 15px; }
+    .logo-text { margin-left: 0; text-align: center; }
+    .nav-links { justify-content: center; gap: 10px; flex-wrap: wrap; }
+
+    /* Home Page: Keep Slider Horizontal */
+    .netflix-slider {
+        display: flex !important;
+        flex-direction: row !important; 
+        overflow-x: auto !important; 
+    }
+
+    /* Service Pages: Stack Grids Vertically */
+    .mission-grid {
+        display: flex !important;
+        flex-direction: column !important; 
+        align-items: center !important;
+    }
+    .mv-box { width: 100% !important; margin-bottom: 20px; }
+
+    .about-flex, .contact-flex-wrapper { flex-direction: column !important; }
+    
+    /* Map Height Adjustment for Mobile */
+    .contact-map-box { height: 300px !important; }
+
+    html, body { overflow-x: hidden !important; width: 100%; }
+}
+
+.main-footer { background: var(--navy); color: white; text-align: center; padding: 40px 20px; }
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 43, 92, 0.8);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.left-arrow { left: 10px; }
+.right-arrow { right: 10px; }
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .slider-arrow { display: none; }
+}
+/* Centers only the specific headings on the Home Page */
+.home-heading-center, .center-title {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: 25px;
+}
+
+/* This keeps the text and image side-by-side on desktop */
+.about-flex {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    text-align: justify; /* Keeps the paragraph text clean */
+}
+/* --- OUR SERVICES HEADING SIZE --- */
+.center-title {
+    text-align: center;
+    width: 100%;
+    color: #333;          /* Dark Grey/Black for professional look */
+    font-size: 42px;      /* Much bigger font size */
+    font-weight: 500;      /* Extra bold weight */
+    margin-top: 10px;     /* Space above */
+    margin-bottom: 50px;  /* Space below, between heading and cards */
+    letter-spacing: -1px; /* Tighter, modern look */
+}
+
+/* Make sure it scales down for phones */
+@media (max-width: 768px) {
+    .center-title {
+        font-size: 22px;  /* Smaller size for mobile screens */
+        margin-bottom: 30px;
+    }
+}
+/* --- CONTACT SECTION SIDE-BY-SIDE LAYOUT --- */
+.contact-flex-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/* Grouping text and scanner together on the left */
+.contact-left-group {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.contact-info-centered {
+    flex: 2;
+}
+
+/* The Mini Scanner Box */
+.contact-scanner-mini {
+    flex: 1;
+    background: #fff;
+    padding: 10px;
+    border: 2px solid var(--navy);
+    border-radius: 8px;
+    text-align: center;
+    max-width: 130px; /* Keeps it small as requested */
+}
+
+.contact-scanner-mini img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.contact-scanner-mini p {
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 5px;
+    color: var(--navy);
+}
+
+.contact-map-box {
+    flex: 1.2;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Mobile: Stack them vertically so it doesn't break */
+@media (max-width: 768px) {
+    .contact-flex-wrapper, .contact-left-group {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contact-map-box {
+        width: 100%;
+        height: 250px;
+    }
+}
+/* This ensures the paragraph text is not bold */
+.contact-details p {
+    font-weight: 400; /* 400 is normal weight */
+    color: #444;      /* Professional dark grey */
+}
+
+/* This keeps only the label bold */
+.contact-details p strong {
+    font-weight: 700;
+    color: var(--navy);
+}
+/* Makes the email look professional but clearly interactive */
+.clickable-email {
+    text-decoration: none;
+    color: #004080; /* A professional navy blue */
+    transition: color 0.3s ease;
+}
+
+.clickable-email:hover {
+    color: #d9534f; /* Changes color to red when hovered so users know they can click */
+    text-decoration: underline;
+}
+.service-page {
+    padding: 40px 0; /* Standard padding for most pages */
+}
+
+.hero-section {
+    margin-bottom: 0 !important;
+}
+
+/* 2. Specific fix for Virtual CFO Page */
+.vcfo-layout .about-flex {
+    gap: 100px !important; /* This creates the large space between text and image */
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.vcfo-layout .about-image img {
+    max-height: 450px;
+    width: 100%;
+    object-fit: contain; /* Keeps the holographic image from stretching */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustment for the VCFO gap on phones */
+@media (max-width: 768px) {
+    .vcfo-layout .about-flex {
+        gap: 30px !important;
+    }
+}
